@@ -1,0 +1,15 @@
+{
+    "electrum.b1tcore.org": {
+        "pruning": "-",
+        "s": "50002",
+        "t": "50001",
+        "version": "1.4.2"
+    },
+    "electrum.b1texplorer.com": {
+        "pruning": "-",
+        "s": "50002",
+        "t": "50001",
+        "version": "1.4.2"
+    }
+
+}
