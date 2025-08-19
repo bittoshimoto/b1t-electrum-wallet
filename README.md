@@ -1,4 +1,4 @@
-# Electrum - Lightweight Bitcoin client
+# Electrum - Lightweight B1T client
 
 ```
 Licence: MIT Licence
