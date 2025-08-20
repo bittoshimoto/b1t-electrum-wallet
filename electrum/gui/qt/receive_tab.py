@@ -189,8 +189,8 @@ class ReceiveTab(QWidget, MessageBoxMixin, Logger):
             _('This information is seen by the recipient if you send them a signed payment request.'),
             '\n\n',
             _('For on-chain requests, the address gets reserved until expiration. After that, it might get reused.'), ' ',
-            _('The bitcoin address never expires and will always be part of this electrum wallet.'), ' ',
-            _('You can reuse a bitcoin address any number of times but it is not good for your privacy.'),
+            _('The B1T address never expires and will always be part of this electrum wallet.'), ' ',
+            _('You can reuse a B1T address any number of times but it is not good for your privacy.'),
             '\n\n',
             _('For Lightning requests, payments will not be accepted after the expiration.'),
         ])
@@ -276,7 +276,7 @@ class ReceiveTab(QWidget, MessageBoxMixin, Logger):
 
     def get_tab_data(self):
         if self.URI:
-            out = self.URI, self.URI, self.URI_help, _('Bitcoin URI')
+            out = self.URI, self.URI, self.URI_help, _('B1T URI')
         elif self.addr:
             out = self.addr, self.addr, self.address_help, _('Address')
         else:
@@ -300,7 +300,7 @@ class ReceiveTab(QWidget, MessageBoxMixin, Logger):
             if amount_sat and amount_sat < self.wallet.dust_threshold():
                 self.show_error(_('Amount too small to be received onchain'))
                 return
-            address = self.get_bitcoin_address_for_request(amount_sat)
+            address = self.get_b1t_address_for_request(amount_sat)
             if not address:
                 return
             self.window.address_list.update()
@@ -325,7 +325,7 @@ class ReceiveTab(QWidget, MessageBoxMixin, Logger):
         # copy current tab to clipboard
         self.on_tab_changed()
 
-    def get_bitcoin_address_for_request(self, amount) -> Optional[str]:
+    def get_b1t_address_for_request(self, amount) -> Optional[str]:
         addr = self.wallet.get_unused_address()
         if addr is None:
             if not self.wallet.is_deterministic():  # imported wallet
