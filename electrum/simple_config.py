@@ -772,9 +772,9 @@ Warning: setting this to too low will result in lots of payment failures."""),
     TEST_SHUTDOWN_LEGACY = ConfigVar('test_shutdown_legacy', default=False, type_=bool)
 
     # fee_policy is a dict: fee_policy_name -> fee_policy_descriptor
-    FEE_POLICY = ConfigVar('fee_policy.default', default='eta:2', type_=str)  # exposed to GUI
-    FEE_POLICY_LIGHTNING = ConfigVar('fee_policy.lnwatcher', default='eta:2', type_=str)  # for txbatcher (sweeping)
-    FEE_POLICY_SWAPS = ConfigVar('fee_policy.swaps', default='eta:2', type_=str)  # for txbatcher (sweeping and sending if we are a swapserver)
+    FEE_POLICY = ConfigVar('fee_policy.default', default='feerate:100', type_=str)  # exposed to GUI
+    FEE_POLICY_LIGHTNING = ConfigVar('fee_policy.lnwatcher', default='feerate:100', type_=str)  # for txbatcher (sweeping)
+    FEE_POLICY_SWAPS = ConfigVar('fee_policy.swaps', default='feerate:100', type_=str)  # for txbatcher (sweeping and sending if we are a swapserver)
 
     RPC_USERNAME = ConfigVar('rpcuser', default=None, type_=str)
     RPC_PASSWORD = ConfigVar('rpcpassword', default=None, type_=str)
@@ -845,9 +845,9 @@ Warning: setting this to too low will result in lots of payment failures."""),
     GUI_QML_ALWAYS_ALLOW_SCREENSHOTS = ConfigVar('android_always_allow_screenshots', default=False, type_=bool)
     GUI_QML_SET_MAX_BRIGHTNESS_ON_QR_DISPLAY = ConfigVar('android_set_max_brightness_on_qr_display', default=True, type_=bool)
 
-    BTC_AMOUNTS_DECIMAL_POINT = ConfigVar('decimal_point', default=DECIMAL_POINT_DEFAULT, type_=int)
+    BTC_AMOUNTS_DECIMAL_POINT = ConfigVar('decimal_point', default=8, type_=int)  # B1T (8 decimal places)
     BTC_AMOUNTS_FORCE_NZEROS_AFTER_DECIMAL_POINT = ConfigVar(
-        'num_zeros', default=0, type_=int,
+        'num_zeros', default=6, type_=int,
         short_desc=lambda: _('Zeros after decimal point'),
         long_desc=lambda: _('Number of zeros displayed after the decimal point. For example, if this is set to 2, "1." will be displayed as "1.00"'),
     )
@@ -861,7 +861,7 @@ Warning: setting this to too low will result in lots of payment failures."""),
     )
 
     BLOCK_EXPLORER = ConfigVar(
-        'block_explorer', default='Blockstream.info', type_=str,
+        'block_explorer', default='b1texplorer.com', type_=str,
         short_desc=lambda: _('Online Block Explorer'),
         long_desc=lambda: _('Choose which online block explorer to use for functions that open a web browser'),
     )
