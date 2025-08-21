@@ -845,7 +845,7 @@ Warning: setting this to too low will result in lots of payment failures."""),
     GUI_QML_ALWAYS_ALLOW_SCREENSHOTS = ConfigVar('android_always_allow_screenshots', default=False, type_=bool)
     GUI_QML_SET_MAX_BRIGHTNESS_ON_QR_DISPLAY = ConfigVar('android_set_max_brightness_on_qr_display', default=True, type_=bool)
 
-    BTC_AMOUNTS_DECIMAL_POINT = ConfigVar('decimal_point', default=8, type_=int)  # B1T (8 decimal places)
+    BTC_AMOUNTS_DECIMAL_POINT = ConfigVar('decimal_point', default=DECIMAL_POINT_DEFAULT, type_=int)  # B1T (8 decimal places)
     BTC_AMOUNTS_FORCE_NZEROS_AFTER_DECIMAL_POINT = ConfigVar(
         'num_zeros', default=6, type_=int,
         short_desc=lambda: _('Zeros after decimal point'),

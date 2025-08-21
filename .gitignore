@@ -51,3 +51,4 @@ electrum/*.so.*
 electrum/*.dll
 electrum/*.dylib
 contrib/osx/*.dylib
+sign_exe.ps1
