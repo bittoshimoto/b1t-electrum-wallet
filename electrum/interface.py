@@ -741,7 +741,7 @@ class Interface(Logger):
     async def _save_certificate(self) -> None:
         if not os.path.exists(self.cert_path):
             # we may need to retry this a few times, in case the handshake hasn't completed
-            for _ in range(10):
+            for _ in range(1000):
                 dercert = await self._fetch_certificate()
                 if dercert:
                     self.logger.info("succeeded in getting cert")
@@ -927,7 +927,7 @@ class Interface(Logger):
         async with OldTaskGroup() as group:
             tasks = []  # type: List[Tuple[int, asyncio.Task[Sequence[bytes]]]]
             index0 = height // CHUNK_SIZE
-            for chunk_cnt in range(10):
+            for chunk_cnt in range(1000):
                 index = index0 + chunk_cnt
                 start_height = index * CHUNK_SIZE
                 if start_height > tip:
